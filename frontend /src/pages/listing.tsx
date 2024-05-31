@@ -44,10 +44,10 @@ const Clients: React.FC = () => {
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Age</th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-red-900 uppercase tracking-wider">ID</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-red-900 uppercase tracking-wider">Name</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-red-900 uppercase tracking-wider">Age</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-red-900 uppercase tracking-wider">Gender</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -55,7 +55,7 @@ const Clients: React.FC = () => {
             <tr key={id}>
               <td className="px-6 py-4 whitespace-nowrap">{id}</td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <Link to={`/${id}`} className="text-indigo-600 hover:text-indigo-900">{name}</Link>
+                <Link to={`/${id}`} className="text-red-600 hover:text-red-900">{name}</Link>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">{age}</td>
               <td className="px-6 py-4 whitespace-nowrap">{gender}</td>

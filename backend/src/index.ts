@@ -29,7 +29,7 @@ await startStandaloneServer(server, {
     listen: { port: 4000 },
     context: async ({ req }) => ({ token: req.headers.token }),
     cors: {
-      origin: 'http://localhost:5173/', // Adjust this as needed for your specific CORS requirements
+      origin: '*', 
       credentials: true,
     },
   });
