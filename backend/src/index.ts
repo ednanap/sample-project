@@ -1,6 +1,6 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
-import { typeDefs } from './schema';
+import { typeDefs } from './schema.ts';
 //reading from file
 import * as fs from 'fs';
 import { fileURLToPath } from 'url';
@@ -24,7 +24,7 @@ const server = new ApolloServer({
 typeDefs,resolvers})
 
 const{ url }= await startStandaloneServer(server,{
-    listen: { port: 4101}
+    listen: { port: 4012}
 })
 
-console.log('server ready at port 4000')
+console.log('server ready at port 4101')
