@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
+// GraphQL query to fetch clients' details
 const GET_CLIENTS = gql`
   query GetClients {
     clients {
@@ -13,12 +14,31 @@ const GET_CLIENTS = gql`
   }
 `;
 
-const Clients: React.FC = () => {
-  const { loading, error, data } = useQuery(GET_CLIENTS);
+// TypeScript interface to define the shape of a Client object
+interface Client {
+  id: string;
+  name: string;
+  age: number;
+  gender: string;
+}
 
+// TypeScript interface for the query result
+interface GetClientsData {
+  clients: Client[];
+}
+
+// Functional component to display the list of clients
+const Clients: React.FC = () => {
+  // useQuery hook to execute the GET_CLIENTS query
+  const { loading, error, data } = useQuery<GetClientsData>(GET_CLIENTS);
+
+  // Render a loading message if the query is still in progress
   if (loading) return <p>Loading...</p>;
+
+  // Render an error message if the query failed
   if (error) return <p>Error: {error.message}</p>;
 
+  // Render the clients' data in a table if the query was successful
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
       <table className="min-w-full divide-y divide-gray-200">
@@ -31,14 +51,14 @@ const Clients: React.FC = () => {
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {data.clients.map((client: { id: string, name: string, age: number, gender: string, additionalInfo: string }) => (
-            <tr key={client.id}>
-              <td className="px-6 py-4 whitespace-nowrap">{client.id}</td>
+          {data?.clients.map(({ id, name, age, gender }) => (
+            <tr key={id}>
+              <td className="px-6 py-4 whitespace-nowrap">{id}</td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <Link to={`/${client.id}`} className="text-indigo-600 hover:text-indigo-900">{client.name}</Link>
+                <Link to={`/${id}`} className="text-indigo-600 hover:text-indigo-900">{name}</Link>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap">{client.age}</td>
-              <td className="px-6 py-4 whitespace-nowrap">{client.gender}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{age}</td>
+              <td className="px-6 py-4 whitespace-nowrap">{gender}</td>
             </tr>
           ))}
         </tbody>
@@ -48,6 +68,8 @@ const Clients: React.FC = () => {
 };
 
 export default Clients;
+
+
 
 
 

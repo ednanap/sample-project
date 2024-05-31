@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@apollo/client": "^3.10.4",
-    "graphql": "^16.8.1"
+    "cors": "^2.8.5",
+    "graphql": "^16.8.1",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.3"
